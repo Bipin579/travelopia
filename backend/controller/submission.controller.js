@@ -2,11 +2,11 @@ const SubmissionModel = require("../model/submission.model");
 const createCsvWriter = require("csv-writer").createObjectCsvWriter;
 const fs = require("fs");
 
-const maxSubmissionsPerPage = 10;
+const maxSubmissionsPerPage = 5;
 
 const getSubmissions = async (req, res) => {
   const pageNumber = parseInt(req.query.page || 0);
-  const total = Math.ceil(
+  const totalPage = Math.ceil(
     (await SubmissionModel.countDocuments()) / maxSubmissionsPerPage
   );
   const submissions = await SubmissionModel.find({})
@@ -17,23 +17,24 @@ const getSubmissions = async (req, res) => {
   res.json({
     submissions,
     page: pageNumber,
-    total,
+    totalPage,
   });
 };
 
 const postSubmissions = async (req, res) => {
   try {
     const submissionData = req.body;
+    console.log(submissionData)
     const submission = new SubmissionModel(submissionData);
-
     await submission.save();
-    res.json(submission);
-  } catch(err) {
-    res.status(500).send({err:err.message});
+    res.status(201).json({submission,message:"Data Submitted",success:true});
+  } catch (err) {
+    console.log(error)
+    res.status(500).send({err:error.message,success:false});
   }
 };
 
-// controller.get('/:id',
+
 const getSingleSubmission = async (req, res) => {
   try {
     const submission = await SubmissionModel.findById(req.params.id);
