@@ -87,9 +87,10 @@ export default function Submission() {
                         Contact us to plan your next journey!
                     </Text>
                 </Stack>
-                <form onSubmit={handleSubmit} mt={5}>
+                <form onSubmit={handleSubmit} mt={5} id="form">
                     <Stack spacing={4}>
                         <Input
+                            id="name"
                             type="text"
                             isRequired
                             placeholder="Full Name"
@@ -105,6 +106,7 @@ export default function Submission() {
                         <Input
                             placeholder="email@gmail.com"
                             type="email"
+                            id="email"
                             isRequired
                             bg="gray.100"
                             border={0}
@@ -118,6 +120,7 @@ export default function Submission() {
 
                         <Select
                             placeholder="Select a destination"
+                            id="destination"
                             required
                             bg="gray.100"
                             border={0}
@@ -130,9 +133,10 @@ export default function Submission() {
                             <option value="Europe">Europe</option>
                         </Select>
                         <Input
-                            placeholder="Number of travelers"
+                            placeholder="Number of travellers"
                             type="number"
                             isRequired
+                            id="travellers"
                             bg="gray.100"
                             border={0}
                             color="gray.500"
@@ -146,6 +150,7 @@ export default function Submission() {
                             placeholder="Budget per person"
                             type="number"
                             isRequired
+                            id="budget"
                             bg="gray.100"
                             border={0}
                             color="gray.500"
@@ -157,6 +162,7 @@ export default function Submission() {
                         />
                     </Stack>
                     <Button
+                        id="submit"
                         type="submit"
                         fontFamily="heading"
                         mt={8}

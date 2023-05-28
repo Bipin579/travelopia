@@ -36,6 +36,7 @@ const Navbar = () => {
             <Box>
                 <Link to="/">
                     <Button bgGradient="linear(to-r, red.400,pink.400)"
+                        id="home"
                         color="white"
                         _hover={{
                             bgGradient: "linear(to-r, red.400,pink.400)",
@@ -44,6 +45,7 @@ const Navbar = () => {
                 </Link>
                 <Link to="/dashboard">
                     <Button bgGradient="linear(to-r, red.400,pink.400)"
+                        id="dashboard"
                         color="white"
                         _hover={{
                             bgGradient: "linear(to-r, red.400,pink.400)",

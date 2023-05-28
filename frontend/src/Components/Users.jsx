@@ -56,7 +56,8 @@ const Users = () => {
     onOpen();
     setSingleUser(user);
   };
-
+  console.log(data[0])
+  console.log(process.env.REACT_APP_API_URL);
   const handleCSV = () => {
     axios
       .get(`${process.env.REACT_APP_API_URL}/submission/download-csv`, {
