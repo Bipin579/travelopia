@@ -17,6 +17,7 @@ export default function Submission() {
     const [destination, setDestination] = useState("");
     const [travellerCount, setTravellerCount] = useState("");
     const [budgetPerPerson, setBudgetPerPerson] = useState("");
+    const [loading, setLoading] = useState(false);
     const toast = useToast()
 
     const handleSubmit = async (e) => {
@@ -30,12 +31,14 @@ export default function Submission() {
             budgetPerPerson,
         };
         console.log(userData);
+        setLoading(true)
         try {
             let data = await axios.post(
                 `${process.env.REACT_APP_API_URL}/submission/post-data`,
                 userData
             );
-            console.log(data);
+            // console.log(data);
+            setLoading(false)
             toast({
                 title: 'Data Submitted.',
                 status: 'success',
@@ -56,7 +59,8 @@ export default function Submission() {
                 duration: 3000,
                 isClosable: true,
                 position: "top"
-            })
+            });
+            setLoading(false)
         }
     };
     return (
@@ -174,7 +178,7 @@ export default function Submission() {
                             boxShadow: "xl",
                         }}
                     >
-                        Submit
+                        {loading ? "Submitting" : "Submit"}
                     </Button>
                 </form>
             </Stack>

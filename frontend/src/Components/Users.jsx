@@ -31,20 +31,24 @@ const Users = () => {
   const [singleUser, setSingleUser] = useState({});
   const [page, setPage] = useState(0);
   const [totalPage, setTotalPage] = useState(1);
-
+  const [loading, setLoading] = useState(false);
   const initialRef = React.useRef(null);
   const finalRef = React.useRef(null);
 
   const getAllUser = () => {
+    setLoading(true);
     axios
       .get(`${process.env.REACT_APP_API_URL}/submission?page=${page}`)
       .then((res) => {
-        console.log(res);
+        setLoading(false);
+
         setData(res.data.submissions);
         setTotalPage(res.data.totalPage);
       })
       .catch((err) => {
         console.log(err);
+        setLoading(false);
+
       });
   };
 
@@ -130,7 +134,9 @@ const Users = () => {
               </Th>
             </Tr>
           </Thead>
+         
           <Tbody>
+            
             {data.length > 0 &&
               data.map((el, i) => {
                 return (
@@ -154,6 +160,7 @@ const Users = () => {
               })}
           </Tbody>
         </Table>
+        {loading && (<Text textAlign={"center"} fontWeight={"bold"}>...loading</Text>)}
         <Box display={"flex"} gap={"2"} w="max-content" m={"auto"} p="2">
           <Button
             isDisabled={page === 0}
@@ -186,6 +193,7 @@ const Users = () => {
           </Button>
         </Box>
       </TableContainer>
+     
       <Modal
         size={"xs"}
         initialFocusRef={initialRef}
