@@ -57,6 +57,18 @@ npm install in frontend
 npm start
 ```
 
+How to run frontend testcase locally ?
+```
+- npx cypress run
+- video guide how testcases are running in web
+
+
+
+https://github.com/Bipin579/travelopia/assets/110052834/a6c55df6-1857-47f4-ac4a-baa2c72e8f52
+
+
+
+
 ## 🏛️Features:
 
 - Getting User details from frontend saving it to database
