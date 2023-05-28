@@ -60,6 +60,7 @@ npm start
 How to run frontend testcase locally ?
 ```
 - npx cypress run
+- after running locally check cypress /frontend/cypress/reports to see the test report html page and test video.
 - video guide how testcases are running in web
 
 
