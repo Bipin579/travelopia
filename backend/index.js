@@ -1,8 +1,8 @@
 const express = require("express");
-const { connectMongoose } = require("./config/db");
+const { connectMongoose } = require("./src/config/db");
 require("dotenv").config();
 const cors = require("cors");
-const submissionRoute = require("./routes/submission.route");
+const submissionRoute = require("./src/routes/submission.route");
 
 
 const app = express();

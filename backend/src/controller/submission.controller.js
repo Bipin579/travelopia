@@ -35,14 +35,7 @@ const postSubmissions = async (req, res) => {
 };
 
 
-const getSingleSubmission = async (req, res) => {
-  try {
-    const submission = await SubmissionModel.findById(req.params.id);
-    res.json(submission);
-  } catch (err) {
-    res.status(404).send("Submission not found!");
-  }
-};
+
 
 
 
@@ -99,4 +92,4 @@ const getCSV = async (req, res) => {
 
 
 
-module.exports ={getSingleSubmission,postSubmissions,getSubmissions, getCSV};
+module.exports ={postSubmissions,getSubmissions, getCSV};
